@@ -1,14 +1,44 @@
-import qs from 'query-string';
 import axios from 'axios';
-
-import { API_URL } from '~/src/settings';
+import {
+    addItemURL,
+    deleteItemURL,
+    getItemsURL,
+    getItemURL,
+    updateItemURL,
+} from '../routes';
 
 export default class ItemsService {
-    static async getItemByLink(id: string) {
-        return axios.get(`${API_URL}/${id}`);
+    static async getItemByLink(id: number) {
+        return axios.get(getItemURL(id));
     }
 
-    static async getItemsByLink(params: object) {
-        return axios.get(`${API_URL}?${qs.stringify({ ...params })}`);
+    static async getItemsByLink(params?: object) {
+        return axios.get(getItemsURL(params));
+    }
+
+    static async addItem(title: string, active = true) {
+        return axios.post(addItemURL, {
+            title,
+            active,
+        });
+    }
+
+    static async deleteItem(id: number) {
+        return axios.delete(deleteItemURL(id));
+    }
+
+    static async updateItem({
+        ID,
+        title,
+        active,
+    }: {
+        ID: number;
+        title: string;
+        active: boolean;
+    }) {
+        return axios.put(updateItemURL(ID), {
+            title,
+            active,
+        });
     }
 }

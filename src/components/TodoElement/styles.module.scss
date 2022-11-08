@@ -1,0 +1,42 @@
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 10px;
+
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+}
+
+.input {
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+}
+
+.controlBlock {
+    display: flex;
+    align-items: center;
+}
+
+.editBtn {
+    height: 36px;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    height: 28px;
+    cursor: pointer;
+}
+
+.done {
+    background: #dfdfdf;
+}
